@@ -1,0 +1,31 @@
+enum Color {
+        RED, GREEN, BLUE
+    }
+
+    public class Enum {
+
+        // Method that accepts a Color enum
+        public static void processColor(Color color) {
+            // Check if the provided enum constant is valid
+            if (color == null) {
+                throw new IllegalArgumentException("Invalid enum constant. Color cannot be null.");
+            }
+
+            // Perform processing with the valid enum constant
+            System.out.println("Processing color: " + color);
+            // Add your logic here
+        }
+
+        public static void main(String[] args) {
+            try {
+                // Using a valid enum constant
+                processColor(Color.RED);
+
+                // Using an invalid enum constant
+                processColor(null); // This will throw an IllegalArgumentException
+            } catch (IllegalArgumentException e) {
+                System.out.println("Caught Exception: " + e.getMessage());
+                // Handle the exception or log it as needed
+            }
+        }
+    }

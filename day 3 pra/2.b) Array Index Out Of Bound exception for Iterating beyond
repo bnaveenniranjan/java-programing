@@ -1,0 +1,12 @@
+  public class iteratingbeyond{
+
+    public static void main(String[] args) {
+        try {
+            int[] array = {1, 2, 3, 4, 5};
+            iterateBeyondArrayLength(array);
+            System.out.println("Array iteration successful.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught ArrayIndexOutOfBoundsException: " + e.getMessage());
+        }
+    }
+

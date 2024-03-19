@@ -1,0 +1,17 @@
+public class AccessingArray {
+
+    public static void main(String[] args) {
+        try {
+            int[] array = {1, 2, 3, 4, 5};
+            int index = 10; // Trying to access an element outside the array's bounds
+            int value = getElementAtIndex(array, index);
+            System.out.println("Value at index " + index + ": " + value);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught ArrayIndexOutOfBoundsException: " + e.getMessage());
+        }
+    }
+
+    public static int getElementAtIndex(int[] array, int index) {
+        return array[index];
+    }
+}

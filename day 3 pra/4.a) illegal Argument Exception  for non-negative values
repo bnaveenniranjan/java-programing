@@ -1,0 +1,23 @@
+public class NonNegativeArgumentExample {
+
+    public static void main(String[] args) {
+        try {
+            // Calling a method that requires a non-negative argument
+            processNonNegativeValue(-5);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("IllegalArgumentException caught!");
+            e.printStackTrace();
+        }
+    }
+
+    // Method that requires a non-negative argument and throws IllegalArgumentException
+    private static void processNonNegativeValue(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Value must be non-negative");
+        }
+
+        // Process the value if it is non-negative
+        System.out.println("Processing non-negative value: " + value);
+    }
+}

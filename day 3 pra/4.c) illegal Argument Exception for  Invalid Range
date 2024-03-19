@@ -1,0 +1,29 @@
+public class InvalidRange {
+        // Method that accepts an integer within a specified range
+        public static void processNumberInRange(int number) {
+            int lowerBound = 1;
+            int upperBound = 100;
+
+            // Check if the provided number is within the specified range
+            if (number < lowerBound || number > upperBound) {
+                throw new IllegalArgumentException("Invalid number. Must be between " + lowerBound + " and " + upperBound + ".");
+            }
+
+            // Perform processing with the valid number
+            System.out.println("Processing number: " + number);
+            // Add your logic here
+        }
+
+        public static void main(String[] args) {
+            try {
+                // Using a valid number within the range
+                processNumberInRange(42);
+
+                // Using an invalid number outside the range
+                processNumberInRange(150); // This will throw an IllegalArgumentException
+            } catch (IllegalArgumentException e) {
+                System.out.println("Caught Exception: " + e.getMessage());
+                // Handle the exception or log it as needed
+            }
+        }
+    }
