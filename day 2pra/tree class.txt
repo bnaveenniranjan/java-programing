@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+// Interface Tree
+interface Tree {
+    void fruits(String type, int quantity);
+    void leaves(String color, int size, String shape);
+    void flowers(String color, int petals, String fragrance, String season);
+}
+
+// Class Branch1 implementing Tree
+class Branch1 implements Tree {
+    public void fruits(String type, int quantity) {
+        System.out.println("Fruits: " + quantity + " " + type);
+    }
+
+    public void leaves(String color, int size, String shape) {
+        System.out.println("Leaves: " + size + " sized " + color + " leaves, shaped like " + shape);
+    }
+
+    public void flowers(String color, int petals, String fragrance, String season) {
+        System.out.println("Flowers: " + petals + " petals " + color + " flowers, fragrance: " + fragrance + ", blooming in " + season);
+    }
+}
+
+// Class Branch2 implementing Tree
+class Branch2 implements Tree {
+    public void fruits(String type, int quantity) {
+        System.out.println("Fruits: " + quantity + " " + type);
+    }
+
+    public void leaves(String color, int size, String shape) {
+        System.out.println("Leaves: " + size + " sized " + color + " leaves, shaped like " + shape);
+    }
+
+    public void flowers(String color, int petals, String fragrance, String season) {
+        System.out.println("Flowers: " + petals + " petals " + color + " flowers, fragrance: " + fragrance + ", blooming in " + season);
+    }
+}
+
+// Main class to test the implementation
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create an instance of Branch1
+        Branch1 branch1 = new Branch1();
+        System.out.println("Enter fruit type and quantity:");
+        String fruitType = scanner.next();
+        int fruitQuantity = scanner.nextInt();
+        branch1.fruits(fruitType, fruitQuantity);
+
+        System.out.println("Enter leaf color, size, and shape:");
+        String leafColor = scanner.next();
+        int leafSize = scanner.nextInt();
+        String leafShape = scanner.next();
+        branch1.leaves(leafColor, leafSize, leafShape);
+
+        System.out.println("Enter flower color, petals count, fragrance, and blooming season:");
+        String flowerColor = scanner.next();
+        int petalsCount = scanner.nextInt();
+        String fragrance = scanner.next();
+        String bloomingSeason = scanner.next();
+        branch1.flowers(flowerColor, petalsCount, fragrance, bloomingSeason);
+
+        // Create an instance of Branch2
+        Branch2 branch2 = new Branch2();
+        // Similar user input process can be repeated for Branch2
+    }
+}

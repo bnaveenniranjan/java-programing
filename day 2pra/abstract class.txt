@@ -1,0 +1,70 @@
+import java.util.*;
+
+abstract class AbstractStatistics {
+    // Abstract methods
+    public abstract int total(List<Integer> data);
+    public abstract double average(List<Integer> data);
+
+    // Concrete methods
+    public double mean(List<Integer> data) {
+        return data.stream().mapToDouble(Integer::doubleValue).average().orElse(0.0);
+    }
+
+    public int mode(List<Integer> data) {
+        return Collections.max(data, (a, b) -> Collections.frequency(data, a) - Collections.frequency(data, b));
+    }
+
+    public double median(List<Integer> data) {
+        Collections.sort(data);
+        int size = data.size();
+        if (size % 2 == 0) {
+            return (data.get((size / 2) - 1) + data.get(size / 2)) / 2.0;
+        } else {
+            return data.get(size / 2);
+        }
+    }
+}
+
+class ConcreteStatistics extends AbstractStatistics {
+    @Override
+    public int total(List<Integer> data) {
+        return data.stream().mapToInt(Integer::intValue).sum();
+    }
+
+    @Override
+    public double average(List<Integer> data) {
+        return data.stream().mapToInt(Integer::intValue).average().orElse(0.0);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> data = new ArrayList<>();
+
+        // Get input from the user
+        System.out.println("Enter the numbers (enter 'done' to finish input):");
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("done")) {
+                break;
+            }
+            try {
+                int num = Integer.parseInt(input);
+                data.add(num);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input! Please enter a valid integer or 'done' to finish input.");
+            }
+        }
+        scanner.close();
+
+        // Calculate statistics
+        ConcreteStatistics stats = new ConcreteStatistics();
+
+        System.out.println("Total: " + stats.total(data));
+        System.out.println("Average: " + stats.average(data));
+        System.out.println("Mean: " + stats.mean(data));
+        System.out.println("Mode: " + stats.mode(data));
+        System.out.println("Median: " + stats.median(data));
+    }
+}
